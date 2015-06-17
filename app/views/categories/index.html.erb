@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+<!-- Default panel contents -->
+<div class="panel-heading">Список всех категорий.</div>
+
+  <!-- Table -->
+  <table class="table">
+      <% @categories.each do |category| %>
+      <tr id='category_<%= category.id%>'>
+        <td><%= link_to category.name, category_path(category) %></td>
+        <td>
+            <%= link_to 'Редактировать', edit_category_path(category) %>
+            <%= link_to 'Удалить', category_path(category), method: :delete, data: {confirm: "Вы уверены?"}, remote:true %>
+        </td>
+      </tr>
+    <% end %>
+    
+  </table>
+</div>

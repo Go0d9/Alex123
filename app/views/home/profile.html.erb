@@ -1,0 +1,22 @@
+ <div class="row">
+    <div class="col-lg-4">
+      <div class="container">
+        <%= image_tag(@person.avatar_url, width: "150") if @person.avatar? %>  
+      </div>
+    </div>
+    
+    <div class="col-lg-8">
+      <div class="container">
+        <div class="page-header">
+          <h1><%= @person.login %><small><%= link_to "", edit_person_path(@person), :class=>"glyphicon glyphicon-cog" %></small><br/>
+          <small><%= @person.email %></small>
+          </h1>
+        </div>
+        <h3>Возраст: <%= @person.age %><br/>
+        Пол: М<br/>
+        О себе: <%= @person.about %><br/>
+        
+      </div>
+
+    </div>
+  </div>

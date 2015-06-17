@@ -1,0 +1,19 @@
+<div class="show">
+<h1><%= @post.title %></h1> 
+<small>
+  <%= link_to "#{Category.find(@post.category_id).name}", category_path(@post.category) %>
+</small>
+<p><%= @post.body%></p>
+<button type="button" class="btn btn-default btn-xs">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+</button>
+</div>
+<div class="container">
+      <h2 >Коментарии(<span id="count"><%= @post.comments.count %></span>)</h2>
+      <%= render @post.comments %>
+  <% if current_user || current_user && current_user.admin? %>
+      <%= render "comments/form" %>
+  <% else %>
+    <p>Комментарии могут оставлять только зарегистрированные пользователи.</p>    
+  <% end %>
+</div>

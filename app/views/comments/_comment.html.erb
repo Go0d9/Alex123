@@ -1,0 +1,17 @@
+<div id='comment_<%= comment.id %>', class="comments">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+      <strong><%= comment.commenter %></strong>
+        <% if current_user && current_user.admin? %>
+          <%= link_to '', [comment.post, comment],
+            method: :delete,
+            data: { confirm: 'Вы уверены?' }, remote:true, :class=>"glyphicon glyphicon-trash" %>
+        <% end %>  
+      </h3>
+    </div>
+    <div class="panel-body">
+      <%= comment.body %>
+    </div>
+  </div>
+</div>

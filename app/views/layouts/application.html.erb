@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AlexFlush</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar">
+    <%= render 'layouts/navigation'%>
+  </div>
+  <% if current_user && current_user.admin? %>
+  <div class="container">
+    <%= render 'layouts/adminbar'%>
+  </div>
+  <% end %>  
+  <div class="container">
+    <%if notice %>
+      <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Success!</strong> <%= notice %>
+      </div>
+    <% end %>
+    <%if alert %>
+      <div class="alert alert-error">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Warring!</strong> <%= alert %>
+      </div>
+    <% end %>
+  </div>  
+    <div class="container">
+
+    <%= yield %>
+  </div>
+  <div class="well well-lg">
+    <div class="social_accounts">
+        <a href="http://vk.com/habr" class="vk"></a>
+        <!-- <a href="" class="gp"></a> //-->
+    </div>
+  </div>
+</body>
+</html>

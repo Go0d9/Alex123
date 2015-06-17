@@ -1,0 +1,9 @@
+<% @posts.each do |post| %>
+  <div id='post_<%= post.id%>',class="jumbotron">
+    <h1><%= post.title %></h1>
+    <p><%= truncate(strip_tags(post.body),
+                             length: 80) %></p>
+    <p><%= link_to 'Читать', post_path(post), :class=>"btn btn-primary btn-lg" %></p>
+  </div>
+<% end %>
+

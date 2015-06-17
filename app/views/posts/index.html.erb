@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+<!-- Default panel contents -->
+<div class="panel-heading">Список всех статей.</div>
+
+  <!-- Table -->
+  <table class="table">
+      <% @posts.each do |post| %>
+      <tr id='post_<%= post.id%>', class="<%=cycle('list_line_odd','list_line_even')%>">
+        <td><%= post.title %></td>
+        <td><%= truncate(strip_tags(post.body), length: 80) %></td>  
+        <td><%= link_to "#{Category.find(post.category_id).name}", category_path(post.category) %></td>   
+        <td>
+            <%= link_to 'Читать', post_path(post) %>
+            <%= link_to 'Редактировать', edit_post_path(post) %>
+            <%= link_to 'Удалить', post_path(post), method: :delete, data: {confirm: "Вы уверены?"}, remote:true %>
+        </td>
+      </tr>
+    <% end %>
+    
+  </table>
+</div>
